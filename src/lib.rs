@@ -21,7 +21,10 @@ pub fn benchmark(size: usize, num_thread: usize) -> f64 {
     std::thread::scope(|s|{
         workloads.into_iter().map(|workloads|{
             s.spawn(move || monte_claro(workloads))
-        }).map(|handle|{
+        })
+        .collect::<Vec<_>>()
+        .into_iter()
+        .map(|handle|{
             handle.join().unwrap()
         }).sum::<usize>() as f64 / size as f64 * 4.0
     })
