@@ -1,4 +1,4 @@
-use monte_claro_benchmark::benchmark;
+use monte_carlo_benchmark::benchmark;
 fn main() {
     // do something like this
     let size = 1000000;
